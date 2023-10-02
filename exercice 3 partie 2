@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> quotations = new ArrayList<>();
+        quotations.add("Quand Paris s’enrhume, l’Europe a froid");
+        quotations.add("S'il y a un diamant dans la poitrine, il brille sur le visage");
+        quotations.add("La joie de vivre n'est pas un but, mais un devoir");
+        
+        for (String quote : quotations) {
+            int vowelCount = countVowels(quote);
+            System.out.println("Phrase : " + quote);
+            System.out.println("Nombre de voyelles : " + vowelCount);
+            System.out.println();
+        }
+    }
+    
+    private static int countVowels(String str) {
+        int count = 0;
+        String vowels = "AEIOUaeiou"; // Liste des voyelles en majuscules et minuscules
+        
+        for (char c : str.toCharArray()) {
+            if (vowels.indexOf(c) != -1) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
