@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {21565, 3412, 180, 1556, 182, 84, 15};
+        boolean isFirst = true; // Pour gérer la première virgule
+
+        for (int number : numbers) {
+            if (number % 3 != 0) {
+                if (!isFirst) {
+                    System.out.print(", "); // Ajoute une virgule si ce n'est pas le premier nombre
+                } else {
+                    isFirst = false; // Ne pas ajouter de virgule avant le premier nombre
+                }
+                System.out.print(number);
+            }
+        }
+    }
+}
