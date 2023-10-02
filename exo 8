@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+        String[] colors = {"bleu", "rouge", "jaune"};
+
+        for (String couleur : colors) {
+            String phrase;
+            
+            switch (couleur) {
+                case "bleu":
+                    phrase = "Le ciel est " + couleur + ".";
+                    break;
+                case "rouge":
+                    phrase = "Les roses sont " + couleur + ".";
+                    break;
+                case "jaune":
+                    phrase = "Le soleil est " + couleur + ".";
+                    break;
+                default:
+                    phrase = "Couleur inconnue : " + couleur + ".";
+                    break;
+            }
+            
+            System.out.println(phrase);
+        }
+    }
+}
