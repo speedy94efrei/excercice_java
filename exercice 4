@@ -1,0 +1,27 @@
+public class Main {
+    public static void main(String[] args) {
+        // Déclaration et initialisation de la variable str
+        String str = "Hello World !";
+        
+        // Initialisation de la variable i
+        int i = 0;
+        
+        // Calcul de la longueur de la chaîne str
+        int strLength = str.length();
+        
+        // Boucle while pour parcourir les caractères de str
+        while (i < strLength) {
+            // Affiche le caractère actuel
+            System.out.print(str.charAt(i));
+            
+            // Vérifie si ce n'est pas le dernier caractère
+            if (i < strLength - 1) {
+                // Affiche un espace
+                System.out.print(" ");
+            }
+            
+            // Incrémente i
+            i++;
+        }
+    }
+}
