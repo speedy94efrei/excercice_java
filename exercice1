@@ -1,0 +1,15 @@
+public class Main {
+    public static void main(String[] args) {
+        // Déclaration et initialisation de la variable String "name"
+        String name = "Alex";
+
+        // Déclaration et initialisation de la variable Integer "age"
+        Integer age = 25;
+
+        // Concaténation de la chaîne "name" et de la valeur "age"
+        String result = name + age;
+
+        // Affichage du résultat
+        System.out.println(result);
+    }
+}
