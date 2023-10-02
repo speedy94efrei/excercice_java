@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        // Déclaration et initialisation des variables
+        String name = "Halil";
+        int age = 27;
+        String job = "développeur";
+
+        // Affichage de la phrase en utilisant une seule instruction println
+        System.out.println("Je m'appelle " + name + ", j'ai " + age + " ans et je suis " + job + ".");
+    }
+}
