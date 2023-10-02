@@ -1,0 +1,20 @@
+public class Main {
+    public static void main(String[] args) {
+        // Déclaration et initialisation de la variable str
+        String str = "abcdefghijklmnopqrstuvwxyz";
+
+        // Initialisation de la variable i
+        int i = 0;
+
+        // Boucle while pour parcourir la chaîne str
+        while (i < str.length()) {
+            // Affiche le caractère actuel
+            System.out.print(str.charAt(i));
+
+            // Incrémente i de 2 pour sauter un caractère
+            i += 2;
+        }
+
+        System.out.println(); // Pour passer à la ligne après l'affichage
+    }
+}
