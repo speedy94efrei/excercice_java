@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static int averageCalc(ArrayList<Integer> numbers) {
+        int sum = 0;
+        int nbElement = numbers.size();
+
+        for (int number : numbers) {
+            sum += number;
+        }
+
+        if (nbElement > 0) {
+            return sum / nbElement;
+        } else {
+            return 0; // Évite la division par zéro si le tableau est vide
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> nbArray = new ArrayList<>();
+        nbArray.add(75);
+        nbArray.add(80);
+        nbArray.add(90);
+        nbArray.add(95);
+        nbArray.add(85);
+
+        int averageArray = averageCalc(nbArray);
+
+        System.out.println("La moyenne du tableau est : " + averageArray);
+    }
+}
