@@ -1,0 +1,117 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        char[][] tableau = {
+            {' ', ' ', ' '},
+            {' ', ' ', ' '},
+            {' ', ' ', ' '}
+        };
+
+        char joueurHumain = 'X';
+        char joueurOrdinateur = 'O';
+        boolean jeuEnCours = true;
+        int coups = 0;
+
+        AfficherTableau(tableau);
+
+        while (jeuEnCours) {
+            if (coups % 2 == 0) {
+                // Tour du joueur humain
+                int[] position = DemanderCoup(joueurHumain);
+                int ligne = position[0];
+                int colonne = position[1];
+
+                if (tableau[ligne][colonne] == ' ') {
+                    tableau[ligne][colonne] = joueurHumain;
+                    coups++;
+                } else {
+                    System.out.println("Case déjà occupée, veuillez réessayer.");
+                    continue;
+                }
+            } else {
+                // Tour de l'ordinateur (joueur fictif)
+                int[] position = GenererCoupAleatoire(tableau);
+                int ligne = position[0];
+                int colonne = position[1];
+
+                if (tableau[ligne][colonne] == ' ') {
+                    tableau[ligne][colonne] = joueurOrdinateur;
+                    coups++;
+                }
+            }
+
+            AfficherTableau(tableau);
+
+            if (VérifierVictoire(tableau, joueurHumain)) {
+                System.out.println("Vous avez gagné !");
+                jeuEnCours = false;
+            } else if (VérifierVictoire(tableau, joueurOrdinateur)) {
+                System.out.println("L'ordinateur a gagné !");
+                jeuEnCours = false;
+            } else if (coups == 9) {
+                System.out.println("Match nul !");
+                jeuEnCours = false;
+            }
+        }
+    }
+
+    public static void AfficherTableau(char[][] tableau) {
+        System.out.println("  0 1 2");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(tableau[i][j]);
+                if (j < 2) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("  -----");
+            }
+        }
+        System.out.println();
+    }
+
+    public static int[] DemanderCoup(char joueur) {
+        Scanner scanner = new Scanner(System.in);
+        int[] position = new int[2];
+
+        System.out.print("Joueur " + joueur + ", entrez la ligne (0, 1 ou 2) : ");
+        position[0] = scanner.nextInt();
+        System.out.print("Joueur " + joueur + ", entrez la colonne (0, 1 ou 2) : ");
+        position[1] = scanner.nextInt();
+
+        return position;
+    }
+
+    public static int[] GenererCoupAleatoire(char[][] tableau) {
+        Random random = new Random();
+        int ligne, colonne;
+        do {
+            ligne = random.nextInt(3);
+            colonne = random.nextInt(3);
+        } while (tableau[ligne][colonne] != ' ');
+        return new int[]{ligne, colonne};
+    }
+
+    public static boolean VérifierVictoire(char[][] tableau, char joueur) {
+        for (int i = 0; i < 3; i++) {
+            if (tableau[i][0] == joueur && tableau[i][1] == joueur && tableau[i][2] == joueur) {
+                return true;
+            }
+            if (tableau[0][i] == joueur && tableau[1][i] == joueur && tableau[2][i] == joueur) {
+                return true;
+            }
+        }
+        if (tableau[0][0] == joueur && tableau[1][1] == joueur && tableau[2][2] == joueur) {
+            return true;
+        }
+        if (tableau[0][2] == joueur && tableau[1][1] == joueur && tableau[2][0] == joueur) {
+            return true;
+        }
+        return false;
+    }
+}
